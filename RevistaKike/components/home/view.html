@@ -24,6 +24,8 @@
                 <li class="current"><img src="components/pageturn/mini.jpg" alt="Page 1" />
                 </li>
             </ul>
+            <a href="#" id="previous">Previous page</a>
+            <a href="#" id="next">Next page</a>
         </div>
         <script>
             function current(page) {
@@ -50,13 +52,22 @@
                     newPage = pages.eq(pagesCount - page).addClass("current");
 
                     if (page > currentIndex) {
-                        kendo.fx(book).pageturnHorizontal(current, newPage).duration(1000).play();
+                        kendo.fx(book).pageturnHorizontal(current, newPage).duration(2000).play();
                     } else {
-                        kendo.fx(book).pageturnHorizontal(newPage, current).duration(1000).reverse();
+                        kendo.fx(book).pageturnHorizontal(newPage, current).duration(2000).reverse();
                     }
                 }
             }
 
+            $("#previous").click(function (e) {
+                e.preventDefault();
+                current(Math.max(1, current() - 1));
+            });
+
+            $("#next").click(function (e) {
+                e.preventDefault();
+                current(Math.min(6, current() + 1));
+            });
             $("#wrap").kendoTouch({
                 enableSwipe: true,
                 swipe: function (e) {
@@ -97,6 +108,36 @@
                 overflow: hidden;
                 margin: 0 auto 3em;
                 width: 650px;
+            }
+            #previous,
+            #next {
+                text-decoration: none;
+                text-indent: -999em;
+                overflow: hidden;
+                display: block;
+                height: 100%;
+                width: 90px;
+                position: absolute;
+                top: 0;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                opacity: .5
+            }
+            #previous:hover,
+            #next:hover {
+                opacity: 1;
+            }
+            #previous {
+                left: 0;
+                background-image: url("components/pageturn/arrow-left.png");
+            }
+            #next {
+                right: 0;
+                background-image: url("components/pageturn/arrow-right.png");
+            }
+            .first-page #previous,
+            .last-page #next {
+                display: none;
             }
         </style>
     </div>
