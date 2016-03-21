@@ -1,0 +1,45 @@
+{
+  "ProjectName": "RevistaKike",
+  "ProjectGuid": "a82e72f7-98ae-4e59-8e0c-92c48894fdcc",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.RevistaKike",
+  "DisplayName": "RevistaKike",
+  "Author": "",
+  "Description": "RevistaKike",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{2c27da56-1647-45f8-9ec3-07f39ed43d04}",
+  "WP8ProductID": "{3aa7928d-569d-4129-920c-cf13ed344edc}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.RevistaKike",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ]
+}
