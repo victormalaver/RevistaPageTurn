@@ -1,14 +1,10 @@
 <div data-role="view" data-title="Home View" data-layout="main" data-model="app.home" data-show="app.home.onShow" data-after-show="app.home.afterShow" data-zoom="true">
-
     <!-- START_CUSTOM_CODE_home -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
     <!-- END_CUSTOM_CODE_home -->
-    
     <div id="example">
         <div id="wrap" class="first-page">
-            <ul id="book"> 
-                
+            <ul id="book">
                 <li><img src="components/pageturn/maserati.jpg" alt="Page 6" />
                 </li>
                 <li><img src="components/pageturn/mazda.jpg" alt="Page 5" />
@@ -27,10 +23,7 @@
                 </li>
                 <li class="current"><img src="components/pageturn/mini.jpg" alt="Page 1" />
                 </li>
-                
             </ul>
-            <a href="#" id="previous">Previous page</a>
-            <a href="#" id="next">Next page</a>
         </div>
         <script>
             function current(page) {
@@ -54,24 +47,28 @@
 
                 if (page != currentIndex) {
                     current.removeClass("current");
-                    newPage = pages.eq(pagesCount - page).addClass("current"); 
+                    newPage = pages.eq(pagesCount - page).addClass("current");
 
                     if (page > currentIndex) {
-                        kendo.fx(book).pageturnHorizontal(current, newPage).duration(2000).play();
+                        kendo.fx(book).pageturnHorizontal(current, newPage).duration(1000).play();
                     } else {
-                        kendo.fx(book).pageturnHorizontal(newPage, current).duration(2000).reverse();
+                        kendo.fx(book).pageturnHorizontal(newPage, current).duration(1000).reverse();
                     }
                 }
             }
 
-            $("#previous").click(function (e) {
-                e.preventDefault();
-                current(Math.max(1, current() - 1));
-            });
-
-            $("#next").click(function (e) {
-                e.preventDefault();
-                current(Math.min(6, current() + 1));
+            $("#wrap").kendoTouch({
+                enableSwipe: true,
+                swipe: function (e) {
+                    if (e.direction == "left") {
+                        e.preventDefault();
+                        //Si colocamos Math.min(...  mas de la cantidad de imágenes regresa al incio en el final  
+                        current(Math.min(9, current() + 1));
+                    } else {
+                        e.preventDefault();
+                        current(Math.max(1, current() - 1));
+                    }
+                }
             });
         </script>
         <style>
@@ -100,36 +97,6 @@
                 overflow: hidden;
                 margin: 0 auto 3em;
                 width: 650px;
-            }
-            #previous,
-            #next {
-                text-decoration: none;
-                text-indent: -999em;
-                overflow: hidden;
-                display: block;
-                height: 100%;
-                width: 90px;
-                position: absolute;
-                top: 0;
-                background-repeat: no-repeat;
-                background-position: 50% 50%;
-                opacity: .5
-            }
-            #previous:hover,
-            #next:hover {
-                opacity: 1;
-            }
-            #previous {
-                left: 0;
-                background-image: url("components/pageturn/arrow-left.png");
-            }
-            #next {
-                right: 0;
-                background-image: url("components/pageturn/arrow-right.png");
-            }
-            .first-page #previous,
-            .last-page #next {
-                display: none;
             }
         </style>
     </div>
